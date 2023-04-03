@@ -24,6 +24,22 @@ export default defineConfig({
     vue(),
     //https://github.com/windicss/vite-plugin-windicss
     WindiCSS(),
+    //https://github.com/antfu/unplugin-auto-import
+    AutoImport({
+      imports: [
+        'vue',
+        'vue-router',
+        'pinia',
+        '@vueuse/core',
+        {
+          axios: [
+            // default imports
+            ['default', 'axios'], // import { default as axios } from 'axios',
+          ],
+        },
+      ],
+      dts: 'types/auto-imports.d.ts',
+    }),
     //https://github.com/antfu/unplugin-vue-components
     Components({
       extensions: ['vue'],
@@ -50,35 +66,23 @@ export default defineConfig({
       scale: 1.125,
       compiler: 'vue3',
     }),
-    //https://github.com/antfu/unplugin-auto-import
-    AutoImport({
-      imports: [
-        'vue',
-        'vue-router',
-        'pinia',
-        '@vueuse/core',
-        {
-          axios: [
-            // default imports
-            ['default', 'axios'], // import { default as axios } from 'axios',
-          ],
-        },
-      ],
-      dts: 'types/auto-imports.d.ts',
-    }),
   ],
   // 简化文件引用路径
+  //想使用resolve，要安装pathe
   resolve: {
     alias: [
       {
+        find: '~',
+        replacement: resolve(__dirname, './'),
+      },
+      {
         find: '@',
-        //想使用resolve，要安装pathe
         //要使用__dirname，要安装@types/node
-        replacement: resolve(__dirname, '../src'),
+        replacement: resolve(__dirname, './src'),
       },
       {
         find: '#',
-        replacement: resolve(__dirname, '../types'),
+        replacement: resolve(__dirname, './types'),
       },
     ],
   },
