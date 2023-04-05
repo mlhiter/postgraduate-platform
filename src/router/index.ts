@@ -12,7 +12,11 @@ router.beforeEach(async (to) => {
   // 更新标题栏title
   const subtitle = to.meta.title
   if (subtitle) {
-    document.title = subtitle
+    if (subtitle == '首页') {
+      document.title = '小青鱼 - 考研互动平台'
+    } else {
+      document.title = `${subtitle} - 小青鱼`
+    }
   }
 })
 

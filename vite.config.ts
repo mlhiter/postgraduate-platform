@@ -18,6 +18,11 @@ export default defineConfig({
         target: 'http://101.43.219.115:8001',
         changeOrigin: true,
       },
+      '/static': {
+        target: 'http://101.43.219.115:8001',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/static/, ''),
+      },
     },
   },
   plugins: [

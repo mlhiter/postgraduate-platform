@@ -1,8 +1,8 @@
 import type { RouteRecordRaw } from 'vue-router'
 
 import MainLayout from '@/layouts/index.vue'
-
-export const constRoutes: RouteRecordRaw[] = [
+// : RouteRecordRaw[]
+export const constRoutes = [
   {
     path: '/',
     name: 'Layout',
@@ -26,7 +26,9 @@ export const constRoutes: RouteRecordRaw[] = [
         path: '/institution',
         name: 'Institution',
         component: () =>
-          import(/* webpackChunkName: "institution" */ '@/pages/institution/index.vue'),
+          import(
+            /* webpackChunkName: "institution" */ '@/pages/institution/index.vue'
+          ),
         meta: {
           title: '院校库',
           icon: 'bx:book',
@@ -37,7 +39,9 @@ export const constRoutes: RouteRecordRaw[] = [
         path: '/community',
         name: 'Community',
         component: () =>
-          import(/* webpackChunkName: "community" */ '@/pages/community/index.vue'),
+          import(
+            /* webpackChunkName: "community" */ '@/pages/community/index.vue'
+          ),
         meta: {
           title: '讨论区',
           icon: 'bx:comment',
