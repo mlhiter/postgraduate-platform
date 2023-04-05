@@ -10,7 +10,10 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     IconBxBook: typeof import('~icons/bx/book')['default']
+    IconBxBox: typeof import('~icons/bx/box')['default']
     IconBxComment: typeof import('~icons/bx/comment')['default']
+    IconBxCommentDetail: typeof import('~icons/bx/comment-detail')['default']
+    IconBxTalk: typeof import('~icons/bx/talk')['default']
     IconMaterialSymbolsEdit: typeof import('~icons/material-symbols/edit')['default']
     NAvatar: typeof import('naive-ui')['NAvatar']
     NButton: typeof import('naive-ui')['NButton']

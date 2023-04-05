@@ -23,6 +23,12 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/static/, ''),
       },
+      //论坛区端口和上述不一样
+      '/talk': {
+        target: 'http://101.43.219.115:8661',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/talk/, ''),
+      },
     },
   },
   plugins: [
