@@ -1,87 +1,93 @@
 <template>
   <div>
     <!-- 容器 -->
-    <n-card class="w-60vw h-1200px shadow-lg" style="margin: 0 auto">
-      <div class="flex flex-row">
-        <!-- 左侧内容区 -->
-        <div
-          class="flex flex-col items-center mr-2"
-          style="height: 70vh; width: 30%">
-          <!-- 学校头像 -->
-          <n-image class="w-25 h-25 m-5" preview-disabled :src="imgUrl" />
-          <div>{{ schoolDetail.schoolName }}</div>
-          <n-divider />
-          <!-- 学校信息 -->
-          <n-space class="ml-10 mr-3 mt-4">
-            <n-tag v-if="schoolDetail.is211">211院校</n-tag>
-            <n-tag v-if="schoolDetail.is985">985院校</n-tag>
-            <n-tag type="success">位置:{{ schoolDetail.region }}</n-tag>
-            <n-tag type="warning">直属：{{ schoolDetail.subjection }}</n-tag>
-            <n-tag type="error" v-if="schoolDetail.graduateSchool">
-              研究生院
-            </n-tag>
-            <n-tag type="info" v-if="schoolDetail.selfMarking">自主招生</n-tag>
-            <n-tag type="success">学校编码:{{ schoolDetail.code }}</n-tag>
-            <n-tag type="warning">学校所属类别:{{ schoolDetail.ab }}</n-tag>
-            <n-tag type="error">学校等级评定结果:{{ schoolDetail.df }}</n-tag>
-          </n-space>
-        </div>
-        <!-- 右侧区 -->
-        <div>
-          <!-- 右侧上侧 -->
-          <div class="flex flex-col" style="width: 70%">
-            <!-- 题目 -->
-            <div class="font-sans text-3xl w-20">专业数据</div>
-            <!-- 检索区 -->
-            <div class="w-130 h-18 mr-10 ml-20 mt-5">
-              <n-space class="flex flex-row justify-center items-end">
-                <!-- 专业名称 -->
-                <n-dropdown
-                  class=""
-                  trigger="hover"
-                  :options="subjectOptions"
-                  @select="changeSubject">
-                  <n-button>专业名称:{{ subject }}</n-button>
-                </n-dropdown>
-                <!-- 硕士类型 -->
-                <n-dropdown
-                  class=""
-                  trigger="hover"
-                  :options="MasterTypeOptions"
-                  @select="changeMasterType">
-                  <n-button>硕士类型:{{ showMaster }}</n-button>
-                </n-dropdown>
-                <!-- 年份 -->
-                <n-dropdown
-                  class=""
-                  trigger="hover"
-                  :options="yearOptions"
-                  @select="changeYear">
-                  <n-button>年份:{{ year }}</n-button>
-                </n-dropdown>
-                <n-button type="info" @click="filterSubjectData(filterParams)">
-                  搜索
-                </n-button>
-              </n-space>
-            </div>
+    <n-scrollbar>
+      <n-card class="w-60vw h-1300px shadow-lg" style="margin: 0 auto">
+        <div class="flex flex-row">
+          <!-- 左侧内容区 -->
+          <div
+            class="flex flex-col items-center mr-2"
+            style="height: 70vh; width: 30%">
+            <!-- 学校头像 -->
+            <n-image class="w-25 h-25 m-5" preview-disabled :src="imgUrl" />
+            <div>{{ schoolDetail.schoolName }}</div>
+            <n-divider />
+            <!-- 学校信息 -->
+            <n-space class="ml-10 mr-3 mt-4">
+              <n-tag v-if="schoolDetail.is211">211院校</n-tag>
+              <n-tag v-if="schoolDetail.is985">985院校</n-tag>
+              <n-tag type="success">位置:{{ schoolDetail.region }}</n-tag>
+              <n-tag type="warning">直属：{{ schoolDetail.subjection }}</n-tag>
+              <n-tag type="error" v-if="schoolDetail.graduateSchool">
+                研究生院
+              </n-tag>
+              <n-tag type="info" v-if="schoolDetail.selfMarking">
+                自主招生
+              </n-tag>
+              <n-tag type="success">学校编码:{{ schoolDetail.code }}</n-tag>
+              <n-tag type="warning">学校所属类别:{{ schoolDetail.ab }}</n-tag>
+              <n-tag type="error">学校等级评定结果:{{ schoolDetail.df }}</n-tag>
+            </n-space>
           </div>
-          <!-- 右侧下侧:列表区 -->
-          <n-data-table
-            class="mb-3"
-            :columns="subjectColumns"
-            :data="subjectDataList.list"
-            :pagination="pagination"
-            :bordered="true"
-            @update:page="handlePageChange" />
-          <n-data-table
-            :columns="courseColumns"
-            :data="subjectDataList.list"
-            :pagination="pagination"
-            :bordered="true"
-            @update:page="handlePageChange" />
+          <!-- 右侧区 -->
+          <div>
+            <!-- 右侧上侧 -->
+            <div class="flex flex-col" style="width: 70%">
+              <!-- 题目 -->
+              <div class="font-sans text-3xl w-20">专业数据</div>
+              <!-- 检索区 -->
+              <div class="w-130 h-18 mr-10 ml-20 mt-5">
+                <n-space class="flex flex-row justify-center items-end">
+                  <!-- 专业名称 -->
+                  <n-dropdown
+                    class=""
+                    trigger="hover"
+                    :options="subjectOptions"
+                    @select="changeSubject">
+                    <n-button>专业名称:{{ subject }}</n-button>
+                  </n-dropdown>
+                  <!-- 硕士类型 -->
+                  <n-dropdown
+                    class=""
+                    trigger="hover"
+                    :options="MasterTypeOptions"
+                    @select="changeMasterType">
+                    <n-button>硕士类型:{{ showMaster }}</n-button>
+                  </n-dropdown>
+                  <!-- 年份 -->
+                  <n-dropdown
+                    class=""
+                    trigger="hover"
+                    :options="yearOptions"
+                    @select="changeYear">
+                    <n-button>年份:{{ year }}</n-button>
+                  </n-dropdown>
+                  <n-button
+                    type="info"
+                    @click="filterSubjectData(filterParams)">
+                    搜索
+                  </n-button>
+                </n-space>
+              </div>
+            </div>
+            <!-- 右侧下侧:列表区 -->
+            <n-data-table
+              class="mb-3"
+              :columns="subjectColumns"
+              :data="subjectDataList.list"
+              :pagination="pagination"
+              :bordered="true"
+              @update:page="handlePageChange" />
+            <n-data-table
+              :columns="courseColumns"
+              :data="subjectDataList.list"
+              :pagination="pagination"
+              :bordered="true"
+              @update:page="handlePageChange" />
+          </div>
         </div>
-      </div>
-    </n-card>
+      </n-card>
+    </n-scrollbar>
   </div>
 </template>
 
@@ -121,9 +127,10 @@ interface SchoolDetail {
   doctorStation?: any
 }
 //院校信息
-const schoolDetail = route.query as unknown as SchoolDetail
+const tempSchoolDetail = ref(route.query as unknown as SchoolDetail)
+const schoolDetail = toRefs(tempSchoolDetail.value)
 onMounted(async () => {
-  fetchSchoolImage(schoolDetail.schoolName)
+  fetchSchoolImage(schoolDetail.schoolName.value)
 })
 
 // @part:获取专业数据
@@ -204,7 +211,7 @@ interface FilterParams {
   major: string
 }
 const filterParams = ref<FilterParams>({
-  school: schoolDetail.schoolName,
+  school: schoolDetail.schoolName.value,
   year: year.value,
   type: master.value,
   major: subject.value,
@@ -325,6 +332,10 @@ const courseColumns = [
   {
     title: '备注信息',
     key: 'remark',
+    width: 100,
+    ellipsis: {
+      tooltip: true,
+    },
   },
 ]
 onMounted(async () => {

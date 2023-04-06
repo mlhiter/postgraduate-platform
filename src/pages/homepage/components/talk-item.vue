@@ -11,12 +11,18 @@
     <div class="flex justify-center flex-col items-center m-15">
       <n-space justify="space-between">
         <div v-for="(data, index) in themeList" :key="index" class="mr-15">
-          <n-card hoverable bordered size="large">
-            <div class="flex flex-col items-center">
-              <n-icon size="30"><icon-bx-comment-detail /></n-icon>
-              <div class="mt-3">{{ data.cname }}</div>
-            </div>
-          </n-card>
+          <router-link
+            :to="{
+              path: '/community',
+              query: { id: data.id, cname: data.cname },
+            }">
+            <n-card hoverable bordered size="large">
+              <div class="flex flex-col items-center">
+                <n-icon size="30"><icon-bx-comment-detail /></n-icon>
+                <div class="mt-3">{{ data.cname }}</div>
+              </div>
+            </n-card>
+          </router-link>
         </div>
       </n-space>
     </div>

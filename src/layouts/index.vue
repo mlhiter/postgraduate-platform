@@ -20,15 +20,15 @@
       </div>
     </n-layout-header>
     <!-- 内容区域 -->
-    <n-layout-content class="h-full mt-4 mx-40 overflow-hidden ">
-      <router-view v-slot="{ Component }">
-        <transition :duration="200" name="fade-top" mode="out-in">
-          <keep-alive>
-            <component :is="Component" />
-          </keep-alive>
-        </transition>
-      </router-view>
-    </n-layout-content>
+      <n-layout-content class="h-full mt-4 mx-40 overflow-hidden">
+        <router-view v-slot="{ Component }">
+          <transition :duration="200" name="fade-top" mode="out-in">
+            <keep-alive>
+              <component :is="Component" />
+            </keep-alive>
+          </transition>
+        </router-view>
+      </n-layout-content>
     <!-- 底部相关信息区域 -->
     <n-layout-footer :embedded="true" class="h-40px mt-6 bg-white">
       <div>
