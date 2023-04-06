@@ -1,7 +1,4 @@
-import type { RouteRecordRaw } from 'vue-router'
-
 import MainLayout from '@/layouts/index.vue'
-// : RouteRecordRaw[]
 export const constRoutes = [
   {
     path: '/',
@@ -25,6 +22,7 @@ export const constRoutes = [
       {
         path: '/institution',
         name: 'Institution',
+        props: true,
         component: () =>
           import(
             /* webpackChunkName: "institution" */ '@/pages/institution/index.vue'

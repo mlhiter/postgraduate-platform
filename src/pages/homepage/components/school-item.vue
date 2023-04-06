@@ -41,17 +41,34 @@
     <div class="flex justify-center flex-col items-center relative">
       <n-space justify="center">
         <div v-for="(data, index) in schoolDetailList.list" :key="index">
-          <n-card
-            hoverable
-            bordered
-            size="medium"
-            class="flex flex-row justify-center items-center">
-            <n-image
-              class="w-4 center"
-              preview-disabled
-              :src="imgUrlList[data.schoolName]" />
-            {{ data.schoolName }}
-          </n-card>
+          <router-link
+            :to="{
+              path: '/Institution',
+              query: {
+                schoolName: data.schoolName,
+                region: data.region,
+                subjection: data.subjection,
+                graduateSchool: data.graduateSchool,
+                selfMarking: data.selfMarking,
+                code: data.code,
+                is211: data.is211,
+                is985: data.is985,
+                ab: data.ab,
+                df: data.df,
+              },
+            }">
+            <n-card
+              hoverable
+              bordered
+              size="medium"
+              class="flex flex-row justify-center items-center cursor-pointer">
+              <n-image
+                class="w-4 center"
+                preview-disabled
+                :src="imgUrlList[data.schoolName]" />
+              {{ data.schoolName }}
+            </n-card>
+          </router-link>
         </div>
       </n-space>
       <!-- 分页 -->

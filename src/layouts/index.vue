@@ -6,7 +6,9 @@
     <n-layout-header bordered class="h-40px bg-sky-200">
       <div class="relative px-2 flex justify-around items-center">
         <n-icon size="40">
-          <img src="../assets/logo.svg" alt="Icon" />
+          <router-link to="/index">
+            <img src="../assets/logo.svg" alt="Icon" />
+          </router-link>
         </n-icon>
         <!-- 网站题目 -->
         <p class="text-sky-600 text-30px">小青鱼</p>
@@ -18,9 +20,7 @@
       </div>
     </n-layout-header>
     <!-- 内容区域 -->
-    <n-layout-content
-      class="h-full mt-4 mx-40 overflow-hidden"
-      :embedded="true">
+    <n-layout-content class="h-full mt-4 mx-40 overflow-hidden ">
       <router-view v-slot="{ Component }">
         <transition :duration="200" name="fade-top" mode="out-in">
           <keep-alive>
