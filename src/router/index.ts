@@ -19,5 +19,5 @@ router.beforeEach(async (to) => {
     }
   }
 })
-
+// FIXME: 切换路由就会失去页面
 export default router
