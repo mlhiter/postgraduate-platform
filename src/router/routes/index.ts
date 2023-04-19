@@ -1,5 +1,7 @@
 import MainLayout from '@/layouts/index.vue'
-export const constRoutes = [
+import type { RouteRecordRaw } from 'vue-router'
+
+export const constRoutes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'Layout',

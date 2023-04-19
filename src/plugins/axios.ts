@@ -1,7 +1,4 @@
 // 请求拦截器
-
-import queryString from 'query-string'
-
 // 所有的请求都会到这里来,会去执行第一个参数，同时自动传入config
 axios.interceptors.request.use(
   function (config) {
@@ -30,3 +27,4 @@ axios.interceptors.response.use(
     return Promise.reject(error)
   }
 )
+export default axios
